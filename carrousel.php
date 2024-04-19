@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Plugin Name: Carroussel
+ * Plugin Name: Carrousel
  * description: affiche un carrousel d'images contrôlable par des boutons
  * version: 1.0.0
  */
