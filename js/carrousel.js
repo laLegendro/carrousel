@@ -52,15 +52,32 @@
     radio.name = "radioCarrousel";
     // modifier le value = index
     radio.value = index;
+    radio.id = "radio" + index; //ajouter un id
     //ajouter le radio bouton au formulaire
     carrousel__form.appendChild(radio);
     console.log(radio, "radio");
 
     //creer un ecouteur d'evenement change sur le radio bouton
+    radio.addEventListener("change", function () {
+      mettreAJourCarrousel(index); //mettre à jour le carrousel
+    });
 
-    //initialiser le style.opacity = 0, pour l'ensemble des images
-    //initialser l'image selectionnée à style.opacity = 1
+    // Initialiser la visibilité de la première image si nécessaire
+    if (index === 0) {
+      radio.checked = true; // Sélectionner le premier bouton par défaut
+      mettreAJourCarrousel(0); // Initialiser l'affichage de la première image
+    }
   }
+
+  // Fonction pour mettre à jour l'affichage des images dans le carrousel
+  function mettreAJourCarrousel(selectedIndex) {
+    let images = document.querySelectorAll(".carrousel__img"); // Sélectionner toutes les images du carrousel
+    images.forEach((img, index) => {
+      img.style.opacity = index === selectedIndex ? "1" : "0"; // Mettre à jour l'opacité selon si l'index correspond à l'index sélectionné
+    });
+  }
+  //initialiser le style.opacity = 0, pour l'ensemble des images
+  //initialser l'image selectionnée à style.opacity = 1
 
   bouton.addEventListener("mousedown", function () {
     console.log("click");
